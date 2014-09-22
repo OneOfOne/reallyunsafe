@@ -1,5 +1,4 @@
 #include "textflag.h"
-
 TEXT ·SwapUint16(SB),NOSPLIT,$0
 	MOVW	4(SP), AX
 	ROLW	$8, AX
@@ -15,7 +14,7 @@ TEXT ·SwapUint32(SB),NOSPLIT,$0
 TEXT ·SwapUint64(SB),NOSPLIT,$0
 	MOVL	4(SP), AX
 	MOVL	8(SP), DX
-	BSWAPL	BP
+	BSWAPL	DX
 	BSWAPL	AX
 	MOVL	DX, 12(SP)
 	MOVL	AX, 16(SP)
