@@ -1,0 +1,18 @@
+#include "textflag.h"
+TEXT ·SwapUint16(SB),NOSPLIT,$0
+	MOVW	8(SP), BX
+	ROLW	$8, BX
+	MOVW	BX, 16(SP)
+	RET
+
+TEXT ·SwapUint32(SB),NOSPLIT,$0
+	MOVL	8(SP), BX
+	BSWAPL	BX
+	MOVL	BX,16(SP)
+	RET
+
+TEXT ·SwapUint64(SB),NOSPLIT,$0
+	MOVQ	8(SP),BX
+	BSWAPQ	BX
+	MOVQ	BX, 16(SP)
+	RET
