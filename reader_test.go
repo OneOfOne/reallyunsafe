@@ -6,20 +6,21 @@ import (
 	"testing"
 )
 
-var testData []byte = make([]byte, 1024*1024*128)
+func Uint64A(p uintptr, i int) uint64
+
+var testData []byte = make([]byte, 1024*1024*8)
 
 func init() {
 	for i := range testData {
-		testData[i] = byte(rand.Intn(256) % 255)
+		testData[i] = byte(rand.Intn(255))
 	}
 }
-func BenchmarkBounds(b *testing.B) {
+
+func BenchmarkReallyUnsafe(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		br := NewNativeBinary(&testData)
-		for y := 0; ; y += 8 {
-			if br.Uint64C(y) == 0 {
-				break
-			}
+		for y := 0; y < len(testData); y += 8 {
+			_ = br.Uint64(y)
 		}
 	}
 }

@@ -1,4 +1,4 @@
-#include "textflag.h"
+#define NOSPLIT 4
 TEXT ·SwapUint16(SB),NOSPLIT,$0
 	MOVW	8(SP), BX
 	ROLW	$8, BX

@@ -1,5 +1,4 @@
-// +build amd64
-// +build 386
+// +build amd64 386
 
 package reallyunsafe
 
